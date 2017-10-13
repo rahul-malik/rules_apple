@@ -40,7 +40,7 @@ def _extract_provisioning_plist_command(ctx, provisioning_profile):
     # be somewhat preferable to one that implies failure. Regardless, we capture
     # the stderr output and only emit it if the command *actually* terminated
     # with a failing exit code so that we reduce noise in the build log.
-    extract_plist_cmd = ("openssl smime -inform der -verify -noverify -in " +
+    extract_plist_cmd = ("security cms -D -i " +
             bash_quote(provisioning_profile.path))
     return ("( " +
             "STDERR=$(mktemp -t openssl.stderr) && " +
